@@ -5,6 +5,8 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Divider from '@material-ui/core/Divider'
 
+import Todo from '../Todo'
+
 interface Todo {
   id: number
   task: string
@@ -24,7 +26,11 @@ const TodoList: React.FC<Props> = ({ Todos }) => {
             return (
               <>
                 <ListItem>
-                  <ListItemText key={todo.id}> {todo.task}</ListItemText>
+                  <Todo
+                    key={todo.id}
+                    task={todo.task}
+                    completed={todo.completed}
+                  />
                 </ListItem>
                 <Divider />
               </>

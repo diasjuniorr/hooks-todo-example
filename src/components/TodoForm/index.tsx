@@ -16,10 +16,15 @@ const TodoForm: React.FC<Props> = ({ addTodo }) => {
     reset()
   }
   return (
-    <Paper>
+    <Paper style={{ margin: '1rem 0', padding: ' 0 1rem' }}>
       <form onSubmit={handleSubmit}>
-        <TextField value={value} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <TextField
+          value={value}
+          onChange={handleChange}
+          label="Add New Todo"
+          margin="normal"
+          fullWidth
+        />
       </form>
     </Paper>
   )

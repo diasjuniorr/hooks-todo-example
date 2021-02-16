@@ -28,8 +28,12 @@ const TodoApp = () => {
         <Toolbar>
           <Typography color="inherit">TODOS WITH HOOKS</Typography>
         </Toolbar>
-        <TodoForm addTodo={addNewTodo} />
-        <TodoList Todos={todos} />
+        <Grid container justify="center">
+          <Grid item xs={11} md={8} lg={4}>
+            <TodoForm addTodo={addNewTodo} />
+            <TodoList Todos={todos} />
+          </Grid>
+        </Grid>
       </AppBar>
     </Paper>
   )
