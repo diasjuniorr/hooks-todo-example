@@ -10,9 +10,11 @@ import EditIcon from '@material-ui/icons/Edit'
 interface Props {
   task: string
   completed: boolean
+  id: number
+  removeTodo: (removeTOdo: number) => void
 }
 
-const Todo: React.FC<Props> = ({ task, completed }) => {
+const Todo: React.FC<Props> = ({ task, completed, removeTodo, id }) => {
   return (
     <>
       <ListItem>
@@ -23,8 +25,8 @@ const Todo: React.FC<Props> = ({ task, completed }) => {
           {task}
         </ListItemText>
         <ListItemSecondaryAction>
-          <IconButton>
-            <DeleteIcon aria-label="Delete" />
+          <IconButton aria-label="Delete" onClick={() => removeTodo(id)}>
+            <DeleteIcon />
           </IconButton>
           <IconButton>
             <EditIcon aria-label="Edit" />

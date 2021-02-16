@@ -22,6 +22,10 @@ const TodoApp = () => {
       { id: todos.length + 1, task: newTodoTitle, completed: false },
     ])
   }
+  const removeTodo = (todoId: number) => {
+    const updatedTodos = todos.filter((item) => item.id != todoId)
+    setTodos(updatedTodos)
+  }
   return (
     <Paper style={paperStyle} elevation={0}>
       <AppBar color="primary" position="static" style={{ height: '64px' }}>
@@ -31,7 +35,7 @@ const TodoApp = () => {
         <Grid container justify="center">
           <Grid item xs={11} md={8} lg={4}>
             <TodoForm addTodo={addNewTodo} />
-            <TodoList Todos={todos} />
+            <TodoList Todos={todos} removeTodo={removeTodo} />
           </Grid>
         </Grid>
       </AppBar>

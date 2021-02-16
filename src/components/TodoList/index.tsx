@@ -14,9 +14,10 @@ interface Todo {
 
 interface Props {
   Todos: Todo[]
+  removeTodo: (todoId: number) => void
 }
 
-const TodoList: React.FC<Props> = ({ Todos }) => {
+const TodoList: React.FC<Props> = ({ Todos, removeTodo }) => {
   return (
     <>
       <Paper>
@@ -26,8 +27,10 @@ const TodoList: React.FC<Props> = ({ Todos }) => {
               <>
                 <Todo
                   key={todo.id}
+                  id={todo.id}
                   task={todo.task}
                   completed={todo.completed}
+                  removeTodo={removeTodo}
                 />
                 <Divider />
               </>
