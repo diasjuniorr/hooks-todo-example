@@ -20,7 +20,7 @@ const TodoApp = () => {
         <Toolbar>
           <Typography color="inherit">TODOS WITH HOOKS</Typography>
         </Toolbar>
-        <TodoList Todos={todos} Test={'teste'} />
+        <TodoList Todos={todos} />
       </AppBar>
     </Paper>
   )
