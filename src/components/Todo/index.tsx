@@ -17,10 +17,17 @@ const Todo: React.FC<Props> = ({ task, completed }) => {
     <>
       <ListItem>
         <Checkbox checked={completed} />
-        <ListItemText>{task}</ListItemText>
+        <ListItemText
+          style={{ textDecoration: completed ? 'line-through' : 'none' }}
+        >
+          {task}
+        </ListItemText>
         <ListItemSecondaryAction>
           <IconButton>
-            <DeleteIcon />
+            <DeleteIcon aria-label="Delete" />
+          </IconButton>
+          <IconButton>
+            <EditIcon aria-label="Edit" />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
