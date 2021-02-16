@@ -23,8 +23,8 @@ const TodoList: React.FC<Props> = ({ Todos }) => {
           {Todos.map((todo) => {
             return (
               <>
-                <ListItem key={todo.id}>
-                  <ListItemText> {todo.task}</ListItemText>
+                <ListItem>
+                  <ListItemText key={todo.id}> {todo.task}</ListItemText>
                 </ListItem>
                 <Divider />
               </>
