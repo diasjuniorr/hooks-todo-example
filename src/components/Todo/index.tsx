@@ -12,13 +12,20 @@ interface Props {
   completed: boolean
   id: string
   removeTodo: (removeTOdo: string) => void
+  updateTodo: (todoId: string) => void
 }
 
-const Todo: React.FC<Props> = ({ task, completed, removeTodo, id }) => {
+const Todo: React.FC<Props> = ({
+  task,
+  completed,
+  removeTodo,
+  id,
+  updateTodo,
+}) => {
   return (
     <>
       <ListItem>
-        <Checkbox checked={completed} />
+        <Checkbox checked={completed} onClick={() => updateTodo(id)} />
         <ListItemText
           style={{ textDecoration: completed ? 'line-through' : 'none' }}
         >

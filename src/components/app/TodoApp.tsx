@@ -18,11 +18,24 @@ const TodoApp = () => {
     { id: uuidv4(), task: 'Do the dishes', completed: true },
   ]
   const [todos, setTodos] = useState(initialTodos)
+
   const addNewTodo = (newTodoTitle: string) => {
     setTodos([...todos, { id: uuidv4(), task: newTodoTitle, completed: false }])
   }
   const removeTodo = (todoId: string) => {
     const updatedTodos = todos.filter((item) => item.id != todoId)
+    setTodos(updatedTodos)
+  }
+
+  const updateTodoStatus = (todoId: string) => {
+    const updatedTodos = todos.map((item) => {
+      if (item.id === todoId) {
+        item.completed = !item.completed
+        return item
+      }
+      return item
+    })
+
     setTodos(updatedTodos)
   }
   return (
@@ -34,7 +47,11 @@ const TodoApp = () => {
         <Grid container justify="center">
           <Grid item xs={11} md={8} lg={4}>
             <TodoForm addTodo={addNewTodo} />
-            <TodoList Todos={todos} removeTodo={removeTodo} />
+            <TodoList
+              Todos={todos}
+              removeTodo={removeTodo}
+              updateTodo={updateTodoStatus}
+            />
           </Grid>
         </Grid>
       </AppBar>
