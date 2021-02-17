@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
+import { v4 as uuidv4 } from 'uuid'
 
 import TodoForm from '../TodoForm'
 import TodoList from '../TodoList'
@@ -11,18 +12,16 @@ import TodoList from '../TodoList'
 import { paperStyle } from './style'
 
 const TodoApp = () => {
+  console.log('uuid', uuidv4())
   const initialTodos = [
-    { id: 1, task: 'Bath the dogs', completed: false },
-    { id: 2, task: 'Do the dishes', completed: true },
+    { id: uuidv4(), task: 'Bath the dogs', completed: false },
+    { id: uuidv4(), task: 'Do the dishes', completed: true },
   ]
   const [todos, setTodos] = useState(initialTodos)
   const addNewTodo = (newTodoTitle: string) => {
-    setTodos([
-      ...todos,
-      { id: todos.length + 1, task: newTodoTitle, completed: false },
-    ])
+    setTodos([...todos, { id: uuidv4(), task: newTodoTitle, completed: false }])
   }
-  const removeTodo = (todoId: number) => {
+  const removeTodo = (todoId: string) => {
     const updatedTodos = todos.filter((item) => item.id != todoId)
     setTodos(updatedTodos)
   }

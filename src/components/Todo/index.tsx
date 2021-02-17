@@ -10,8 +10,8 @@ import EditIcon from '@material-ui/icons/Edit'
 interface Props {
   task: string
   completed: boolean
-  id: number
-  removeTodo: (removeTOdo: number) => void
+  id: string
+  removeTodo: (removeTOdo: string) => void
 }
 
 const Todo: React.FC<Props> = ({ task, completed, removeTodo, id }) => {

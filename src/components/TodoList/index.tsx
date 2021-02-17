@@ -7,14 +7,14 @@ import Divider from '@material-ui/core/Divider'
 import Todo from '../Todo'
 
 interface Todo {
-  id: number
+  id: string
   task: string
   completed: boolean
 }
 
 interface Props {
   Todos: Todo[]
-  removeTodo: (todoId: number) => void
+  removeTodo: (todoId: string) => void
 }
 
 const TodoList: React.FC<Props> = ({ Todos, removeTodo }) => {
