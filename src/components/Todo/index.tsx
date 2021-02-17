@@ -15,7 +15,8 @@ interface Props {
   completed: boolean
   id: string
   removeTodo: (removeTOdo: string) => void
-  updateTodo: (todoId: string) => void
+  updateTodoStatus: (todoId: string) => void
+  updateTodo: (todoId: string, newTodoTask: string) => void
 }
 
 const Todo: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const Todo: React.FC<Props> = ({
   completed,
   removeTodo,
   id,
+  updateTodoStatus,
   updateTodo,
 }) => {
   const [isEditing, toggleIsEditing] = useToggle()
@@ -30,10 +32,18 @@ const Todo: React.FC<Props> = ({
     <>
       <ListItem>
         {isEditing ? (
-          <EditForm task={task} />
+          <EditForm
+            todoId={id}
+            task={task}
+            updateTodo={updateTodo}
+            toggle={toggleIsEditing}
+          />
         ) : (
           <>
-            <Checkbox checked={completed} onClick={() => updateTodo(id)} />
+            <Checkbox
+              checked={completed}
+              onClick={() => updateTodoStatus(id)}
+            />
             <ListItemText
               style={{ textDecoration: completed ? 'line-through' : 'none' }}
             >

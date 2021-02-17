@@ -38,6 +38,17 @@ const TodoApp = () => {
 
     setTodos(updatedTodos)
   }
+  const updateTodo = (todoId: string, newTodoTask: string) => {
+    const updatedTodos = todos.map((item) => {
+      if (item.id === todoId) {
+        item.task = newTodoTask
+        return item
+      }
+      return item
+    })
+
+    setTodos(updatedTodos)
+  }
   return (
     <Paper style={paperStyle} elevation={0}>
       <AppBar color="primary" position="static" style={{ height: '64px' }}>
@@ -50,7 +61,8 @@ const TodoApp = () => {
             <TodoList
               Todos={todos}
               removeTodo={removeTodo}
-              updateTodo={updateTodoStatus}
+              updateTodoStatus={updateTodoStatus}
+              updateTodo={updateTodo}
             />
           </Grid>
         </Grid>
