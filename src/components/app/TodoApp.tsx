@@ -12,9 +12,7 @@ import TodoList from '../TodoList'
 import { paperStyle } from './style'
 
 const TodoApp = () => {
-  const initialTodos = JSON.parse(
-    window.localStorage.getItem('@todo-hooks/todos') || '[]',
-  )
+  const initialTodos = '[]'
   const {
     todos,
     addNewTodo,

@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import UseLocalStorageState from './useLocalStorageState'
 
 interface Todo {
   id: string
   completed: boolean
   task: string
 }
-export default (initialTodos: Todo[]) => {
-  const [todos, setTodos] = useState(initialTodos)
+export default (initialTodos: string) => {
+  const [todos, setTodos] = UseLocalStorageState(
+    '@todo-hooks/todos',
+    initialTodos,
+  )
 
   return {
     todos,

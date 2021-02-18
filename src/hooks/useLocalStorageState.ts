@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
-const UseLocalStorageState = (key: string, defaultValue: any) => {
+const UseLocalStorageState = (key: string, defaultValue: string) => {
   const [state, setState] = useState(() => {
     let val
     try {
-      val = JSON.parse(window.localStorage.getItem(key) || String(defaultValue))
+      val = JSON.parse(window.localStorage.getItem(key) || defaultValue)
     } catch (error) {
       val = defaultValue
     }
