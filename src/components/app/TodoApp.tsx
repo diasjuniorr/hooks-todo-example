@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import AppBar from '@material-ui/core/AppBar'
@@ -12,7 +12,6 @@ import TodoList from '../TodoList'
 import { paperStyle } from './style'
 
 const TodoApp = () => {
-  console.log('uuid', uuidv4())
   const initialTodos = [
     { id: uuidv4(), task: 'Bath the dogs', completed: false },
     { id: uuidv4(), task: 'Do the dishes', completed: true },
