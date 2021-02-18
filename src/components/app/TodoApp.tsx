@@ -11,23 +11,32 @@ import TodoList from '../TodoList'
 
 import { paperStyle } from './style'
 
+interface Todo {
+  id: string
+  completed: boolean
+  task: string
+}
+
 const TodoApp = () => {
-  const initialTodos = [
-    { id: uuidv4(), task: 'Bath the dogs', completed: false },
-    { id: uuidv4(), task: 'Do the dishes', completed: true },
-  ]
+  const initialTodos = JSON.parse(
+    window.localStorage.getItem('@todo-hooks/todos') || '[]',
+  )
   const [todos, setTodos] = useState(initialTodos)
+
+  useEffect(() => {
+    window.localStorage.setItem('@todo-hooks/todos', JSON.stringify(todos))
+  }, [todos])
 
   const addNewTodo = (newTodoTitle: string) => {
     setTodos([...todos, { id: uuidv4(), task: newTodoTitle, completed: false }])
   }
   const removeTodo = (todoId: string) => {
-    const updatedTodos = todos.filter((item) => item.id != todoId)
+    const updatedTodos = todos.filter((item: Todo) => item.id != todoId)
     setTodos(updatedTodos)
   }
 
   const updateTodoStatus = (todoId: string) => {
-    const updatedTodos = todos.map((item) => {
+    const updatedTodos = todos.map((item: Todo) => {
       if (item.id === todoId) {
         item.completed = !item.completed
         return item
@@ -38,7 +47,7 @@ const TodoApp = () => {
     setTodos(updatedTodos)
   }
   const updateTodo = (todoId: string, newTodoTask: string) => {
-    const updatedTodos = todos.map((item) => {
+    const updatedTodos = todos.map((item: Todo) => {
       if (item.id === todoId) {
         item.task = newTodoTask
         return item
