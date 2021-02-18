@@ -13,14 +13,14 @@ interface Todo {
 }
 
 interface Props {
-  Todos: Todo[]
+  todos: Todo[]
   removeTodo: (todoId: string) => void
   updateTodoStatus: (todoId: string) => void
   updateTodo: (todoId: string, newTodoTask: string) => void
 }
 
 const TodoList: React.FC<Props> = ({
-  Todos,
+  todos,
   removeTodo,
   updateTodoStatus,
   updateTodo,
@@ -29,7 +29,7 @@ const TodoList: React.FC<Props> = ({
     <>
       <Paper>
         <List>
-          {Todos.map((todo) => {
+          {todos.map((todo, index) => {
             return (
               <>
                 <Todo
@@ -41,7 +41,7 @@ const TodoList: React.FC<Props> = ({
                   updateTodoStatus={updateTodoStatus}
                   updateTodo={updateTodo}
                 />
-                <Divider />
+                {index < todos.length - 1 && <Divider />}
               </>
             )
           })}

@@ -59,7 +59,7 @@ const TodoApp = () => {
           <Grid item xs={11} md={8} lg={4}>
             <TodoForm addTodo={addNewTodo} />
             <TodoList
-              Todos={todos}
+              todos={todos}
               removeTodo={removeTodo}
               updateTodoStatus={updateTodoStatus}
               updateTodo={updateTodo}
