@@ -18,8 +18,11 @@ const EditForm: React.FC<Props> = ({ todoId, task, updateTodo, toggle }) => {
   }
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <TextField fullWidth value={value} onChange={setValue} />
+      <form
+        onSubmit={handleSubmit}
+        style={{ marginLeft: '1rem', width: '100%' }}
+      >
+        <TextField fullWidth autoFocus value={value} onChange={setValue} />
       </form>
     </>
   )

@@ -30,7 +30,7 @@ const Todo: React.FC<Props> = ({
   const [isEditing, toggleIsEditing] = useToggle()
   return (
     <>
-      <ListItem>
+      <ListItem style={{ height: '64px' }}>
         {isEditing ? (
           <EditForm
             todoId={id}
